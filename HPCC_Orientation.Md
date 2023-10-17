@@ -1,16 +1,20 @@
 **HPCC Orientation**
 
-We will be logging onto the HPCC and doing some preliminary navigation. You will use your panther credentials (username and password) to connect.
+We will be logging onto the HPCC and doing some preliminary navigation. You will use your panther credentials
+(username and password) to connect.
 
 
 Login at the FIU Panther cluster Web portal from a browser: https://hpcgui.fiu.edu
 Note: Mozilla Firefox has not been working for me lately and I have to connect via Safari.
 
-Once you are on, go to the top where it says 'Clusters' and select 'Panther Shell Access.' It will open a terminal and ask you for your panther credentials again.
+Once you are on, go to the top where it says 'Clusters' and select 'Panther Shell Access.' It will open a terminal and ask you 
+for your panther credentials again.
 
 Congratulations! You are officially on the server.
 
-Once you are set up it’s time to learn a little about how to operate on the HPCC. First, note that the terminal looks just like the terminal you used on sandbox.bio. This means that the Unix commands you have used can be used on the HPCC but it also means that you can’t rely on old standbys like Microsoft Word or Excel. Type
+Once you are set up it’s time to learn a little about how to operate on the HPCC. First, note that the terminal looks just like 
+the terminal you used on sandbox.bio. This means that the Unix commands you have used can be used on the HPCC but it also means 
+that you can’t rely on old standbys like Microsoft Word or Excel. Type
 
     $ ls
 
@@ -18,7 +22,8 @@ and
 
     $ pwd
 
-to figure out where you are. We talked a little last time about how “.” is a location reference that indicates our current working directory. Similarly, “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
+to figure out where you are. We talked a little last time about how “.” is a location reference that indicates our current 
+working directory. Similarly, “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
 
     $ cd ./
 
@@ -62,8 +67,8 @@ To see which programs are available type
 
     $ module avail
 
-It will pop out a list of all the software available to use on the HPCC. To scroll through the list type 'return' or hit your space bar, type 'q' to quit and go back to your prompt.
-
+It will pop out a list of all the software available to use on the HPCC. To scroll through the list type 'return' or hit 
+your space bar, type 'q' to quit and go back to your prompt.
 
 In order to use a program we type 
 
