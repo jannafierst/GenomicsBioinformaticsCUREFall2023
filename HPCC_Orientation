@@ -3,17 +3,14 @@
 We will be logging onto the HPCC and doing some preliminary navigation. You will use your panther credentials (username and password) to connect.
 
 
-From the terminal we will use ssh or ‘secure shell’ to connect to the ASC. You can connect to either dmc or uv (it doesn’t actually matter which one you connect to). To connect type
+Login at the FIU Panther cluster Web portal from a browser: https://hpcgui.fiu.edu
+Note: Mozilla Firefox has not been working for me lately and I have to connect via Safari.
 
-    $ ssh -l *yourusernamehere* dmc.asc.edu
+Once you are on, go to the top where it says 'Clusters' and select 'Panther Shell Access.' It will open a terminal and ask you for your panther credentials again.
 
-or 
+Congratulations! You are officially on the server.
 
-    $ ssh -l *yourusernamehere* uv.asc.edu
-
-The system will ask you for your password. Log on, change your password, and make sure you note your new password. We will use these accounts throughout the semester so DO NOT LOSE YOUR USERNAME AND PASSWORD. 
-
-Once you are set up it’s time to learn a little about how to operate on the ASC. First, note that the terminal looks just like the terminal you use to interface with your local computer. This means that the Unix commands you have used can be used on the ASC but it also means that you can’t rely on old standbys like Microsoft Word or Excel. Type
+Once you are set up it’s time to learn a little about how to operate on the HPCC. First, note that the terminal looks just like the terminal you use to interface with your local computer. This means that the Unix commands you have used can be used on the ASC but it also means that you can’t rely on old standbys like Microsoft Word or Excel. Type
 
     $ ls
 
