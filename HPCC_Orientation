@@ -62,15 +62,24 @@ To see which programs are available type
 
     $ module avail
 
-It will pop out a list of all the software available to use on the HPCC. In order to use a program you type 
+It will pop out a list of all the software available to use on the HPCC. To scroll through the list type 'return' or hit your space bar, type 'q' to quit and go back to your prompt.
+
+
+In order to use a program we type 
 
     $ module load ‘softwarenamehere’
 
-For example, scroll through the list and find the blast+ modules. You should see 4 different versions. Try to load blast+/2.6.0. The ‘2.6.0’ indicates the version of the blast program that is available. Can you load ‘blast’? Can you load ‘blast+’ or do you need to type the whole name with the version number? Test it like this:
+For example, scroll through the list and find the minimap module (minimap is alignment software we will use to align our DNA sequence reads to a reference genome sequence).
 
-    $ module load blast
+    $ module load minimap
+
+What happens?
+
+The HPCC is very precise and we need to put the whole name of the module in because sometimes there are different versions of the same software. Type
     
-    $ module load blast+
+    $ module load minimap2-2.24
+
+This loads the minimap2 software and any packages or software it might need to run into your environment. Specifically, it adds the software location to your path.
 
 To see the software in your path type
 
@@ -78,7 +87,7 @@ To see the software in your path type
 
 And to remove software from your path type (for example)
 
-    $ module unload blast+
+    $ module unload minimap2-2.24
 
 Now type 
 
@@ -86,21 +95,9 @@ Now type
 
 again. What happens? 
 
-Now load a specific version of blast
 
-    $ module load blast+/2.3.0
-    
-and type 
-    
-    $ module list
 
-to see what you have loaded. Now try to load the default blast+ (2.6.0)
-
-    $ module load blast+
-   
-What happens?
-
-In order to create files we need to use a text editor on the ASC. My favorite is vim. It has a lot of functionality but we will use it in the most simple way to create our scripts. Type
+In order to create files we need to use a text editor on the HPCC. My favorite is vim. It has a lot of functionality but we will use it in the most simple way to create our scripts. Type
 
     $ vi myfile.txt
     
@@ -127,24 +124,9 @@ and we run the script by typing
  
     $ bash myfile.txt
     
-What happens? We can experiment with different bash commands in our vi script. Type
+What happens? 
 
-    $ vi myfile.txt
-    
-and hit 'i' again to start editing. This time go to the line that starts with 'echo' and replace 'echo' with 'printf' like this
-
-    printf "Hello World!"
-
-again go to command mode, save and quit by typing
-
-    <escape>
-    :wq
-
-and run your new script by typing
-
-    $ bash myfile.txt
-    
-What happens this time? We can add formatting to make things look a little better. Type
+We can add formatting to make things look a little better. Type
 
     $ vi myfile.txt
    
