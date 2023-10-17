@@ -1,8 +1,7 @@
-**Alabama Supercomputer Orientation**
+**HPCC Orientation**
 
-We will be logging onto the ASC and doing some preliminary navigation. You should already have a username and password; please see me at the front if you do not. I need to keep track of the usernames and passwords in case any of you try to turn it into a spambot or decide to mine bitcoins or attempt other cyber crimes. 
+We will be logging onto the HPCC and doing some preliminary navigation. You will use your panther credentials (username and password) to connect.
 
-We will begin to use our Bioinformatics Data Skills textbook this session. Refer to Chapter 4 for how to log on to the ASC. I have also included a short description below.
 
 From the terminal we will use ssh or ‘secure shell’ to connect to the ASC. You can connect to either dmc or uv (it doesn’t actually matter which one you connect to). To connect type
 
