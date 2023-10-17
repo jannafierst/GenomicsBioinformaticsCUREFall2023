@@ -1,0 +1,210 @@
+**Alabama Supercomputer Orientation**
+
+We will be logging onto the ASC and doing some preliminary navigation. You should already have a username and password; please see me at the front if you do not. I need to keep track of the usernames and passwords in case any of you try to turn it into a spambot or decide to mine bitcoins or attempt other cyber crimes. 
+
+We will begin to use our Bioinformatics Data Skills textbook this session. Refer to Chapter 4 for how to log on to the ASC. I have also included a short description below.
+
+From the terminal we will use ssh or ‘secure shell’ to connect to the ASC. You can connect to either dmc or uv (it doesn’t actually matter which one you connect to). To connect type
+
+    $ ssh -l *yourusernamehere* dmc.asc.edu
+
+or 
+
+    $ ssh -l *yourusernamehere* uv.asc.edu
+
+The system will ask you for your password. Log on, change your password, and make sure you note your new password. We will use these accounts throughout the semester so DO NOT LOSE YOUR USERNAME AND PASSWORD. 
+
+Once you are set up it’s time to learn a little about how to operate on the ASC. First, note that the terminal looks just like the terminal you use to interface with your local computer. This means that the Unix commands you have used can be used on the ASC but it also means that you can’t rely on old standbys like Microsoft Word or Excel. Type
+
+    $ ls
+
+and 
+
+    $ pwd
+
+to figure out where you are. We talked a little last time about how “.” is a location reference that indicates our current working directory. Similarly, “..” is a location reference that indicates one directory up. We can use this location reference to move out of our current directory and into an different directory. The command to change directory is ‘cd’ short for… change directory. Type
+
+    $ cd ./
+
+Now type 
+
+    $ pwd
+
+and 
+
+    $ ls
+
+What happens? You should be in the same place because you instructed the computer to cd to your current location. Now type
+
+    $ cd ../
+
+to go up one directory. Type
+
+    $ pwd
+
+and
+
+    $ ls
+
+Where are you now? What else is in this directory?
+
+Go up another level
+
+    $ cd ../
+
+and type 
+
+    $ ls
+
+Where are you now? Try to look around a little bit (don’t worry, you can’t get anywhere you’re not supposed to be).
+
+Sometimes it is helpful to know where things are located. ‘apps’ is where accessory files live, navigate into the directory
+
+    $ cd /apps
+
+and then into the ‘bio’ directory, then into ‘unzipped’ like this
+
+    $ cd bio/unzipped
+
+You will see a number of directories, these are commonly used databases. For example, these should be one called ‘blast’ that houses the blast databases. Navigate into ‘genomes’ 
+
+    $ cd genomes
+
+What do you find there? Navigate into the human (Homo sapiens) directory
+
+    $ cd H_sapiens
+
+What do you find inside? Type 
+
+    $ ls
+   
+to view the contents. Inside this directory you should see a file called README. It will give information about the contents of that directory. Type
+
+    $ more README
+
+to see inside the file. What was the last date this directory was updated? 
+
+Now navigate into the chromosome I directory
+
+    $ cd CHR_01
+
+and type
+
+    $ ls
+
+to see what’s inside. These are the index files for the genome you are looking at. They are formatted to make it easier to search each genome with blast, bowtie, and other alignment programs. Now navigate back to your home directory like this:
+
+    $ cd ~
+
+To see which programs are available type
+
+    $ module avail
+
+It will pop out a list of all the software available to use on the ASC. In order to use a program you type 
+
+    $ module load ‘softwarenamehere’
+
+For example, scroll through the list and find the blast+ modules. You should see 4 different versions. Try to load blast+/2.6.0. The ‘2.6.0’ indicates the version of the blast program that is available. Can you load ‘blast’? Can you load ‘blast+’ or do you need to type the whole name with the version number? Test it like this:
+
+    $ module load blast
+    
+    $ module load blast+
+
+To see the software in your path type
+
+    $ module list
+
+And to remove software from your path type (for example)
+
+    $ module unload blast+
+
+Now type 
+
+    $ module list
+
+again. What happens? 
+
+Now load a specific version of blast
+
+    $ module load blast+/2.3.0
+    
+and type 
+    
+    $ module list
+
+to see what you have loaded. Now try to load the default blast+ (2.6.0)
+
+    $ module load blast+
+   
+What happens?
+
+In order to create files we need to use a text editor on the ASC. My favorite is vim. It has a lot of functionality but we will use it in the most simple way to create our scripts. Type
+
+    $ vi myfile.txt
+    
+Your window should now have a lot of blue tildes in a single column. You are inside your file and you can edit it. Type 'i' for 'insertion mode' and you should see 
+
+    --INSERT--
+
+ at the bottom of your screen. We will now write our first script, a truly momentous day! Our script will start with a header or 'shebang' line that declares our desired shell, bash. We will then write our first program!
+ 
+    #!/bin/bash
+    
+    echo "Hello World!"
+ 
+In order to run our script we need to save our file and exit vi. We do this by hitting the escape key to move from insertion mode to command mode, typing the save command and typing the exit or quit command. Type
+
+    <escape>
+    :wq
+  
+You should now be back at the prompt. In order to make our script executable we type
+
+    $ chmod +x myfile.txt
+ 
+and we run the script by typing
+ 
+    $ bash myfile.txt
+    
+What happens? We can experiment with different bash commands in our vi script. Type
+
+    $ vi myfile.txt
+    
+and hit 'i' again to start editing. This time go to the line that starts with 'echo' and replace 'echo' with 'printf' like this
+
+    printf "Hello World!"
+
+again go to command mode, save and quit by typing
+
+    <escape>
+    :wq
+
+and run your new script by typing
+
+    $ bash myfile.txt
+    
+What happens this time? We can add formatting to make things look a little better. Type
+
+    $ vi myfile.txt
+   
+and hit 'i' again to start editing. Go to your print line and add a \n (newline character) at the end of your statement, within the quotation marks
+
+    printf "Hello World!\n"
+
+again go to command mode, save and quit by typing
+
+    <escape>
+    :wq
+  
+Type
+
+    $ bash myfile.txt
+  
+Does it look different? 
+
+**In-class Assignment**
+
+Write out the answers to these questions on a piece of paper and hand in before you leave. If you don't finish today you can finish at home and turn in the next class.
+
+1. List all the organisms that are present in the 'genomes' directory. 
+2. In one section of this tutorial you loaded blast+/2.3.0 and then blast+. Describe the output ASC gave you and what happened when you did this. 
+
