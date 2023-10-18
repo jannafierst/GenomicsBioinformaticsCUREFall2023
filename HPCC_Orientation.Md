@@ -242,3 +242,9 @@ Submit your answer to this question on Canvas
 
 1. What are the contents of your output_miniTry.log file?
 
+2. Write a full HPCC job script that creates a file called out.txt with these contents:
+
+Hello Class!
+
+
+
