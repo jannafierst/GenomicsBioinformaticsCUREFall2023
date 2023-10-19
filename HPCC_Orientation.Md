@@ -155,8 +155,7 @@ You should see the vi window with the ~ symbols. Type ‘i’ to get into input 
     #!/bin/bash
     
     #SBATCH --account iacc_jfierst
-    #SBATCH --qos highmem1
-    #SBATCH --partition highmem1
+    #SBATCH --qos normal
     #SBATCH -n 8
     #SBATCH --output=out_miniTry.log
     #SBATCH --mail-user=jfierst@fiu.edu
@@ -176,8 +175,7 @@ What’s going on here? We are telling the system
     #!/bin/bash (1)
 
     #SBATCH --account iacc_jfierst (2)
-    #SBATCH --qos highmem1
-    #SBATCH --partition highmem1
+    #SBATCH --qos normal
     #SBATCH -n 8
     #SBATCH --output=output_miniTry.log
     #SBATCH --mail-user=jfierst@fiu.edu
