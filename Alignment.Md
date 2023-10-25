@@ -150,7 +150,11 @@ Next we need to load our alignment and variant calling software into our environ
     $ module load samtools-1.9-gcc-4.8.5-k4xquzh
     $ module load bcftools-1.9-gcc-8.2.0-yvvwafo
 
-We will use this script for alignment and variant calling:
+We will use this script for alignment and variant calling. Type
+
+    $ vi alignment.sh
+
+press 'i' for insertion mode and enter the following (hint: click the double boxes in the corner to copy and then paste into your script)
 
             #!/bin/bash
             #SBATCH--account iacc_jfierst
@@ -165,6 +169,7 @@ We will use this script for alignment and variant calling:
             
             module load minimap2-2.24 # minimap is our alignment software
             module load samtools-1.9-gcc-4.8.5-k4xquzh # samtools is used to process our files
+            module load bcftools-1.9-gcc-8.2.0-yvvwafo # bcftools is used to call variants (mutations) in our alignment file
             
             FILE= YOURFILENAMEHERE
             
@@ -176,7 +181,26 @@ We will use this script for alignment and variant calling:
             
             bcftools mpileup -f ./genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
             
-            bcftools stats calls.bcf > bcf.stats # outputting statistics for our variants
+            bcftools stats calls.bcf > bcf.stats # outputting statistics for all our variants
+            bcftools stats calls.bcf --regions I,II,III,IV,V > autosomes.stats # analyzing the autosomes together
+            bcftools stats calls.bcf --regions X > X.stats # analyzing the X chromosome by itself
+
+Once you have your script written, press 'escape' to get into vi control mode then enter ':wq' to save (w) and quit (q).
+
+Submit your job to the queue
+
+    $ sbatch < alignment.sh
+
+Once your job has finished check the output and log! It's good to get in the habit of reading your logs for errors.
+
+Type
+
+    $ more log
+
+Do you see any problems?
+
+
+
     
     
 
