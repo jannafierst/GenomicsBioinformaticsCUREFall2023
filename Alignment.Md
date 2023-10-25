@@ -37,7 +37,7 @@ and use vi to create a new file
 
     $ vi my_script.sh
 
-You should see the vi window with the ~ symbols. Type ‘i’ to get into input or insertion mode and then type the following into your file (hint: you can click the square in the corner to copy this and then paste it into your HPCC script):
+You should see the vi window with the ~ symbols. Type ‘i’ to get into input or insertion mode and then type the following into your file (hint: you can click the two squares in the corner to copy this and then paste it into your HPCC script):
 
     #!/bin/bash
     
