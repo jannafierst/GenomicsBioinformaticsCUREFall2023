@@ -180,7 +180,8 @@ press 'i' for insertion mode and enter the following (hint: click the double box
     samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
             
     bcftools mpileup -f caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
-            
+
+    bcftools index calls.bcf # creating an index for our file
     bcftools stats calls.bcf > bcf.stats # outputting statistics for all our variants
     bcftools stats calls.bcf --regions I,II,III,IV,V > autosomes.stats # analyzing the autosomes together
     bcftools stats calls.bcf --regions X > X.stats # analyzing the X chromosome by itself
