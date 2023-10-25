@@ -179,7 +179,7 @@ press 'i' for insertion mode and enter the following (hint: click the double box
     samtools view -b N2_alignment.sam > N2_alignment.bam # bam is a binary file type
     samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
             
-    bcftools mpileup -f caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
+    bcftools mpileup -f caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
             
     bcftools stats calls.bcf > bcf.stats # outputting statistics for all our variants
     bcftools stats calls.bcf --regions I,II,III,IV,V > autosomes.stats # analyzing the autosomes together
@@ -195,27 +195,37 @@ Once your job has finished check the output and log! It's good to get in the hab
 
 Type
 
+    $ ls
+
+to check which files were generated and:
+
     $ more log
 
 Do you see any problems?
 
 I see one issue - you have a bunch of text files but what do they mean? To begin to understand our data we need to visualize it!
 
-Ended here - need to update
+bcftools includes some visualization tools we can use. Type
 
-plot-vcfstats -p . X.stats 
+    $ module load python-3.12.0-gcc-13.2.0
 
-error - load python module and run again
+    $ plot-vcfstats -p . X.stats 
 
-python3 plot.py
+If you get an error message type:
 
-count depth
+    $ python3 plot.py
 
-samtools depth -a ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
-0.482832
+and you should see a number of files, including .png and .pdf image files.
 
-samtools depth ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
-1.3158
+You will need to transfer these to your local computer to view. We can do this with the HPCC Desktop interface.
+
+One thing you will see is that our data is, overall, fairly low coverage. We can estimate this across the genome back on the HPCC with samtools:
+
+    $ samtools depth -a ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+
+    $ samtools depth ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+
+the '-a' option gives us the average depth across all sites in the genome; without it we are calculating average depth for only those sites that were sequenced.
 
 
 
