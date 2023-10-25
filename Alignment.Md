@@ -199,6 +199,24 @@ Type
 
 Do you see any problems?
 
+I see one issue - you have a bunch of text files but what do they mean? To begin to understand our data we need to visualize it!
+
+Ended here - need to update
+
+plot-vcfstats -p . X.stats 
+
+error - load python module and run again
+
+python3 plot.py
+
+count depth
+
+samtools depth -a ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+0.482832
+
+samtools depth ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+1.3158
+
 
 
     
