@@ -179,7 +179,7 @@ press 'i' for insertion mode and enter the following (hint: click the double box
     samtools view -b N2_alignment.sam > N2_alignment.bam # bam is a binary file type
     samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
             
-    bcftools mpileup -f ./genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
+    bcftools mpileup -f caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
             
     bcftools stats calls.bcf > bcf.stats # outputting statistics for all our variants
     bcftools stats calls.bcf --regions I,II,III,IV,V > autosomes.stats # analyzing the autosomes together
