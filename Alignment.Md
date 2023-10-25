@@ -120,4 +120,64 @@ Now look in the job output file
 
         $ more output_miniTry.log
 
+**Alignment and Variant Calling**
+
+We started this course discussing 2 paradigms in genomic analysis, de novo assembly and alignment. I had planned for us to pursue assembly and the class actually generated amazing libraries BUT we had equipment/software issues with the Mk1Cs and didn't generate enough data to assemble. SO we are going to align our sequences to genome reference sequences and analyze the variants (mutations) that we find. We have 7 samples and ~21 people to analyze them so you will work in groups of 3.
+
+First, identify your sample and make a note of it.
+
+Next, copy your data to your home directory:
+
+    $ cp /home/data/jfierst/Fall2023Data/YOURSAMPLENAMEHERE.gz ~
+
+You will also copy the reference genome sequence for your sample. Use the commands below depending on your sample name:
+
+    $ cp /home/data/jfierst/Fall2023Data/genomes/AB1_Cendar.genome.fa ~
+
+for AB1 samples
+
+    $ cp /home/data/jfierst/Fall2023Data/genomes/GCA_028201415.1_ASM2820141v1_genomic.fna ~
+
+for CB4856 samples and
+
+    $ cp /home/data/jfierst/Fall2023Data/genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ~
+
+for N2 samples.
+
+Next we need to load our alignment and variant calling software into our environment:
+
+    $ module load minimap2-2.24
+    $ module load samtools-1.9-gcc-4.8.5-k4xquzh
+    $ module load bcftools-1.9-gcc-8.2.0-yvvwafo
+
+We will use this script for alignment and variant calling:
+
+#!/bin/bash
+#SBATCH--account iacc_jfierst
+# Number of nodes
+#SBATCH -N 1
+# Number of tasks 
+#SBATCH -n 16
+##SBATCH --threads-per-core 16
+#SBATCH --output=alignment.log
+
+export OMP_NUM_THREADS=$SLURM_CPUS_ON_NODE. $MODULESHOME/../global/profile.modules
+
+module load minimap2-2.24 # minimap is our alignment software
+module load samtools-1.9-gcc-4.8.5-k4xquzh # samtools is used to process our files
+
+FILE= YOURFILENAMEHERE
+
+minimap2 -d N2_reference.mmi caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa # creating an indexed genome reference
+minimap2 -ax map-ont N2_reference.mmi $FILE > N2_alignment.sam # aligning our data to the reference
+
+samtools view -b N2_alignment.sam > N2_alignment.bam # bam is a binary file type
+samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
+
+bcftools mpileup -f ./genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
+
+bcftools stats calls.bcf > bcf.stats # outputting statistics for our variants
+
+
+
 
