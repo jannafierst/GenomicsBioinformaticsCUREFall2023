@@ -156,9 +156,9 @@ We will use this script for alignment and variant calling. Type
 
 press 'i' for insertion mode and enter the following (hint: click the double boxes in the corner to copy and then paste into your script)
 
-            #!/bin/bash
-            #SBATCH--account iacc_jfierst
-            # Number of nodes
+    #!/bin/bash
+    #SBATCH--account iacc_jfierst
+    # Number of nodes
             #SBATCH -N 1
             # Number of tasks 
             #SBATCH -n 16
