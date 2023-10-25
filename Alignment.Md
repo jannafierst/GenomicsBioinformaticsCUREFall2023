@@ -152,32 +152,32 @@ Next we need to load our alignment and variant calling software into our environ
 
 We will use this script for alignment and variant calling:
 
-#!/bin/bash
-#SBATCH--account iacc_jfierst
-# Number of nodes
-#SBATCH -N 1
-# Number of tasks 
-#SBATCH -n 16
-##SBATCH --threads-per-core 16
-#SBATCH --output=alignment.log
-
-export OMP_NUM_THREADS=$SLURM_CPUS_ON_NODE. $MODULESHOME/../global/profile.modules
-
-module load minimap2-2.24 # minimap is our alignment software
-module load samtools-1.9-gcc-4.8.5-k4xquzh # samtools is used to process our files
-
-FILE= YOURFILENAMEHERE
-
-minimap2 -d N2_reference.mmi caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa # creating an indexed genome reference
-minimap2 -ax map-ont N2_reference.mmi $FILE > N2_alignment.sam # aligning our data to the reference
-
-samtools view -b N2_alignment.sam > N2_alignment.bam # bam is a binary file type
-samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
-
-bcftools mpileup -f ./genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
-
-bcftools stats calls.bcf > bcf.stats # outputting statistics for our variants
-
-
+    #!/bin/bash
+    #SBATCH--account iacc_jfierst
+    # Number of nodes
+    #SBATCH -N 1
+    # Number of tasks 
+    #SBATCH -n 16
+    ##SBATCH --threads-per-core 16
+    #SBATCH --output=alignment.log
+    
+    export OMP_NUM_THREADS=$SLURM_CPUS_ON_NODE. $MODULESHOME/../global/profile.modules
+    
+    module load minimap2-2.24 # minimap is our alignment software
+    module load samtools-1.9-gcc-4.8.5-k4xquzh # samtools is used to process our files
+    
+    FILE= YOURFILENAMEHERE
+    
+    minimap2 -d N2_reference.mmi caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa # creating an indexed genome reference
+    minimap2 -ax map-ont N2_reference.mmi $FILE > N2_alignment.sam # aligning our data to the reference
+    
+    samtools view -b N2_alignment.sam > N2_alignment.bam # bam is a binary file type
+    samtools sort -o N2_alignment_sorted.bam N2_alignment.bam # sorting the file for analysis
+    
+    bcftools mpileup -f ./genomes/caenorhabditis_elegans.PRJNA13758.WBPS18.genomic.fa ./N2_Parent_alignment_sorted.bam | bcftools call -mv -Ob -o calls.bcf # calling variants and outputting to a binary file calls.bcf
+    
+    bcftools stats calls.bcf > bcf.stats # outputting statistics for our variants
+    
+    
 
 
