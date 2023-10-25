@@ -42,6 +42,7 @@ You should see the vi window with the ~ symbols. Type ‘i’ to get into input 
     #!/bin/bash
     
     #SBATCH --account iacc_jfierst
+    #SBATCH --qos highmem1
     #SBATCH -n 8
     #SBATCH --output=out_miniTry.log
     #SBATCH --mail-user=jfierst@fiu.edu
