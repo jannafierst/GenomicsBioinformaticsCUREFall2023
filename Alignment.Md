@@ -158,6 +158,7 @@ press 'i' for insertion mode and enter the following (hint: click the double box
 
     #!/bin/bash
     #SBATCH --account iacc_jfierst
+    #SBATCH --qos highmem1
     # Number of nodes
     #SBATCH -N 1
     # Number of tasks 
