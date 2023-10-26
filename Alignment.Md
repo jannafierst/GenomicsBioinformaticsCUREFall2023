@@ -209,7 +209,7 @@ I see one issue - you have a bunch of text files but what do they mean? To begin
 
 bcftools includes some visualization tools we can use. Type
 
-    $ module load python-3.12.0-gcc-13.2.0
+    $ module load python-3.11.3-gcc-12.1.0
 
     $ plot-vcfstats -p . X.stats 
 
