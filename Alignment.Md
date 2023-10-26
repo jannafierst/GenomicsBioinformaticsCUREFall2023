@@ -223,9 +223,9 @@ You will need to transfer these to your local computer to view. We can do this w
 
 One thing you will see is that our data is, overall, fairly low coverage. We can estimate this across the genome back on the HPCC with samtools:
 
-    $ samtools depth -a ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+    $ samtools depth -a ./N2_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
 
-    $ samtools depth ./N2_Parent_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
+    $ samtools depth ./N2_alignment_sorted.bam | awk -v N=3 '{ sum += $N } END { if (NR > 0) print sum / NR }'
 
 the '-a' option gives us the average depth across all sites in the genome; without it we are calculating average depth for only those sites that were sequenced.
 
