@@ -62,7 +62,7 @@ What’s going on here? We are telling the system
     #!/bin/bash (1)
 
     #SBATCH --account iacc_jfierst (2)
-    #SBATCH --qos normal
+    #SBATCH --qos highmem1
     #SBATCH -n 8
     #SBATCH --output=output_miniTry.log
     #SBATCH --mail-user=jfierst@fiu.edu
