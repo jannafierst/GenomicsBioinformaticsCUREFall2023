@@ -110,7 +110,7 @@ Here, we are:
 2) awk '!_[$4]++' # taking the first instance of each gene name
 3) wc -l # counting by line
 
-
+You can use commands to calculate things and make plots for your poster or download files through Panther Desktop to your computer and work there. The TAs and I are here to help and answer questions! Next week we will have an open lab working session. You are not required to come but the TAs and I will be here to help, answer questions, read things over, anything you need.
 
 
 
