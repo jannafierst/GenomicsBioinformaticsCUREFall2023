@@ -42,6 +42,31 @@ Copy the data into your home directory:
 
 Here, we are using the 'wildcard' character *. It lets UNIX carry out an operation on all files that, here, start with something and end with "stats" or "bed" or "txt. Remember the '~' is a UNIX location, your home directory. Our syntax for copy is cp fromLocation toLocation.
 
+Now you should have a number of different summary files in your home directory. Type
+
+    $ ls
+
+to see what's there. You should have:
+
+    autosomes.stats  bcf.stats  X.stats
+    calls.bed  mutations_in_genes.bed  mutations_not_in_genes.bed
+    chromosome_location_mutation_gene.txt  chromosome_location_mutation.txt
+
+Let's go through the files one by one. 
+
+The .stats files are statistics. Here, bcf.stats is the whole dataset, autosomes.stats is for autosomes only and X. stats is for the X chromosome. The data is in a single file but the developers made it easy to separate with UNIX tools. For example, if you want the indel (insertion/deletion mutation) distribution you can type:
+
+    $ cat bcf.stats | grep '^IDD' > indel.txt
+
+Here, we are: 
+
+1) cat bcf.stats # reading the entire bcf.stats file 
+2) grep '^IDD' # searching for lines that start (the ^ character determines that) with IDD
+3) > indel.txt # writing these lines to a new file called indel.txt
+
+Depending on the data you want to present in your poster, you can use a variant of this command to output a smaller text file for plotting.
+
+
 
 
 
