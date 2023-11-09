@@ -78,7 +78,38 @@ but it's apparent they are huge. To get a sense of this you can count lines:
 
 So, I have also created smaller summary files with most of this information.
 
-The .txt files 
+The .txt files contain columns with 
+
+chromosome    position (nucleotide)    mutation type    gene name
+
+Or without gene name, for the mutations that are not in genes. You can use UNIX commands to query these for data for your poster for example:
+
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "I"
+
+Here, we are:
+
+1) cat chromosome_location_mutation_gene.txt # reading the entire file 
+2) grep -c -w "I" # searching for lines with I (grep) and specifying it has to be an exact match (-w) and to count the occurrences (-c)
+
+So, if you want to count the number of mutations in genes by chromosome you could enter:
+
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "I"
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "II"
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "III"
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "IV"
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "V"
+    $ cat chromosome_location_mutation_gene.txt | grep -c -w "X"
+
+You may also be interested in how many unique genes have mutations. For that we want to reduce our dataset to a single entry, per gene. We can do that like this:
+
+    $ cat chromosome_location_mutation_gene.txt | awk '!_[$4]++' | wc -l
+
+Here, we are:
+
+1) cat chromosome_location_mutation_gene.txt # reading the entire file 
+2) awk '!_[$4]++' # taking the first instance of each gene name
+3) wc -l # counting by line
+
 
 
 
