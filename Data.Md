@@ -62,7 +62,7 @@ Here, we are:
 
 1) cat bcf.stats # reading the entire bcf.stats file 
 2) grep '^IDD' # searching for lines that start (the ^ character determines that) with IDD
-3) > indel.txt # writing these lines to a new file called indel.txt
+3) \> indel.txt # writing these lines to a new file called indel.txt
 
 Depending on the data you want to present in your poster, you can use a variant of this command to output a smaller text file for plotting.
 
