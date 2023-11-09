@@ -80,7 +80,7 @@ So, I have also created smaller summary files with most of this information.
 
 The .txt files contain columns with 
 
-chromosome    position (nucleotide)    mutation type    gene name
+(1) chromosome        (2) position (nucleotide)        (3) mutation type        (4) gene name
 
 Or without gene name, for the mutations that are not in genes. You can use UNIX commands to query these for data for your poster for example:
 
