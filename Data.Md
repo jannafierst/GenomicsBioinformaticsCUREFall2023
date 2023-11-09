@@ -64,7 +64,21 @@ Here, we are:
 2) grep '^IDD' # searching for lines that start (the ^ character determines that) with IDD
 3) \> indel.txt # writing these lines to a new file called indel.txt
 
-Depending on the data you want to present in your poster, you can use a variant of this command to output a smaller text file for plotting.
+Depending on the data you want to present in your poster, you can use a variant of this command to output a smaller text file for plotting. If you need help the TAs and I can help you to edit this line to get the data you want!
+
+The .bed files are intersections; mutations that intersect with genes annotated in the genome or mutations that do not intersect with genes. You can view these files a bit:
+
+    $ head -100 mutations_in_genes.bed
+
+but it's apparent they are huge. To get a sense of this you can count lines:
+
+    $ wc -l mutations_in_genes.bed
+
+    $ wc -l mutations_not_in_genes.bed
+
+So, I have also created smaller summary files with most of this information.
+
+The .txt files 
 
 
 
